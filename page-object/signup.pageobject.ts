@@ -1,9 +1,8 @@
-import { Action } from "../utils/Action";
 import {SignUpPageLocators} from '../page-object/locators/signup-page.locators'
-import { ISignUpPageObject } from "../interface/ISignUpPageObject";
+import { BasePageObject } from "./base.pageobject";
 
 const signUpPageLocators = new SignUpPageLocators();
-export class SignUpPageObject extends Action implements ISignUpPageObject {
+export class SignUpPageObject extends BasePageObject {
 
     async inputEmailSignUp(email: string) {
         await this.sendKey(await this.findElementByXpath(signUpPageLocators.XPATH_EMAIL_TEXTBOX), email);  
@@ -11,10 +10,6 @@ export class SignUpPageObject extends Action implements ISignUpPageObject {
 
     async inputPasswordSignUp(password: string) {
         await this.sendKey(await this.findElementByXpath(signUpPageLocators.XPATH_PASSWORD_TEXTBOX), password)
-    }
-
-    async test() {
-        console.log("Test successfully")
     }
 
 }

@@ -3,11 +3,10 @@ require('chromedriver')
 
 const driver = new Builder().forBrowser('chrome').build();
 export class Action {
-    driver: WebDriver;
+    private driver: WebDriver;
     constructor() {
         this.driver = driver;
     }
-
     
     async findElementByXpath(xpath: string) {
         return await driver.findElement(By.xpath(xpath));

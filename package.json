@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --tags @test"
+    "test": "cucumber-js --tags @test",
+    "running": "ts-node test.ts"
   },
   "author": "",
   "license": "ISC",
