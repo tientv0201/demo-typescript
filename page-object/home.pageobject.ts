@@ -1,9 +1,7 @@
-import { Action } from "../utils/Action";
+import { BasePageObject } from "./base.pageobject";
 
-export class HomePageObject extends Action {
-    constructor() {
-        super();
-    }
+export class HomePageObject extends BasePageObject {
+
 
 
 }

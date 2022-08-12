@@ -1,30 +1,45 @@
-import {Builder, By, WebDriver, WebElement} from 'selenium-webdriver';
-require('chromedriver')
-
-const driver = new Builder().forBrowser('chrome').build();
+import {By, WebDriver, WebElement} from 'selenium-webdriver';
 export class Action {
-    private driver: WebDriver;
-    constructor() {
+    driver: WebDriver;
+    constructor(driver: WebDriver) {
         this.driver = driver;
-    }
-    
-    async findElementByXpath(xpath: string) {
-        return await driver.findElement(By.xpath(xpath));
-    }
-    
-    async findElementById(id: string) {
-        return await driver.findElement(By.id(id));
-    }
-
-    async findElementByName(name: string) {
-        return await driver.findElement(By.name(name));
-    }
-
-    async findElementsByXpath(xpath: string) {
-        return await driver.findElement(By.xpath(xpath));
     }
 
     async sendKey(element: WebElement, text: string) {
         await element.sendKeys(text);
     }
+    
+    async isDisplayed(element: WebElement) {
+        return await element.isDisplayed();
+    }
+
+    async isSelected(element: WebElement) {
+        return await element.isSelected();
+    }
+
+    async isChecked(element: WebElement) {
+        if((await element.getAttribute('checked')).includes('true')) {
+            return true;
+        } else {
+            return false
+        }
+    }
+
+    async getTextInListElements(locators: By) {
+        let listText: String[] = [];
+        let elements = await this.driver.findElements(locators)
+        elements.forEach(async element => {
+            listText.push(await element.getText());
+        });
+        return listText;
+    }
+
+    async click(element: WebElement) {
+        await element.click();
+    }
+
+    async clear(element: WebElement) {
+        await element.clear();
+    }
+
 }

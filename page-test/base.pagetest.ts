@@ -1,8 +1,9 @@
 import { BasePageObject } from "../page-object/base.pageobject";
 
 export class BasePageTest extends BasePageObject {
-    constructor() {
-        super()
+
+    async visitLoginPageWithUrl(url: string) {
+        await this.visit(url);
     }
 
 }
